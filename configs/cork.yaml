@@ -1,0 +1,61 @@
+# model base config
+
+activation: ReLU
+amp: true
+augmentation: true
+bias_free: false
+clip_grad_norm: 1e-2
+checkpoint_interval: -1
+dataset_name: cork
+decoder_channels:
+- 64
+- 64
+- 32
+- 32
+downscaling_layer: strided_conv
+drop_last: true
+ema: true
+ema_decay: 0.9999
+ema_validation: true
+encoder_channels:
+- 32
+- 32
+- 64
+- 64
+- 128
+encoding_type: HashGrid
+eval_metric: mse
+dropout: 0.0
+final_activation: Identity
+head_layer: RegressionHead
+init_lr: 1e-4
+log2_hashmap_size: 21
+log_interval: 50
+loss: mse
+lr_scheduler: CosineAnnealingLR
+memmap: true
+min_lr: 1e-8
+model_name: unet
+model_type: ngp
+n_levels: 16
+N_min: 16
+N_max: 512
+n_hidden_layers: 2
+normalization_layer: BatchNorm2d
+num_points: 1024
+num_proj: 50
+num_warmup_epochs: 5
+occupancy_threshold: 1e-4
+optimizer: adam
+pin_memory: true
+residual_learning: true
+residual_scale_factor: 1.0
+scale_skip_connections: 
+- 1
+- 1
+- 1
+- 1
+stem_size: 11
+upscaling_layer: transposeconv_nogroup
+validation_interval: 10
+weight_decay: 1e-6
