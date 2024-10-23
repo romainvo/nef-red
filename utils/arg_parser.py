@@ -16,12 +16,11 @@ def get_arg_parser():
     parser.add_argument("--model_type", default='ngp', type=str)
     parser.add_argument('--checkpoint_file', default='', type=nullable_string)
 
-    parser.add_argument("--input_dir", default="/cuda/data-1/commun/Tomography/QualityCork3_AST")
-    parser.add_argument("--input_file", default="dataset_50p_1v.csv")
-    parser.add_argument('--dataset_name', default='cork', type=str)
+    parser.add_argument("--input_dir", default="")
+    parser.add_argument("--input_file", default="")
+    parser.add_argument('--dataset_name', default="", type=str)
 
     parser.add_argument("--n_steps", default=500, type=int, help="Number of training steps")
-    parser.add_argument("--result_filename", nargs="?", default="", help="Number of training steps")
     parser.add_argument("--target_sample_batch_size", default=1<<20, type=int,
                         help='Number of sampled volumetric positions')
     parser.add_argument("--num_points", default=1024, type=int,

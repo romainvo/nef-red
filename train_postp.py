@@ -63,9 +63,6 @@ def main(args, args_text):
         exp_name = '_'.join([exp_name, args.output_suffix])
     output_dir = os.path.join(output_base, args.output_dir, exp_name)
     os.makedirs(output_dir, exist_ok=True)
-    os.makedirs(os.path.join(output_dir, 'train_imgs'), exist_ok=True)
-    os.makedirs(os.path.join(output_dir, 'val_imgs'), exist_ok=True)
-
     args.output_dir = output_dir
 
     with open(os.path.join(args.output_dir, 'config.yaml'), 'w') as f:

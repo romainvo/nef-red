@@ -258,10 +258,14 @@ class WalnutDataset(data.Dataset):
 
         self.outputs = outputs
 
-        print(self.df.split_set.unique(), self.df)
+        print(self.df)
         if 'split_set' in self.df:
-            split_set = kwargs.pop('split_set', 'train')
-            self.df = self.df.loc[self.df.split_set == split_set]
+            if self.training:
+                self.df = self.df.loc[self.df.split_set == 'train']
+            elif not self.test:
+                self.df = self.df.loc[self.df.split_set == 'validation']
+            else:
+                self.df = self.df.loc[self.df.split_set == 'test']
 
         self.num_voxels = self.df.iloc[0].num_voxels
 
@@ -380,4 +384,4 @@ class WalnutDataset(data.Dataset):
 
     def __len__(self):
 
-        return self.dataset_size #len(self.sample_list)
+        return self.dataset_size

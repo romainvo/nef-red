@@ -43,6 +43,20 @@ For the rest, you will need the following libraries:
 
 The libraries are compiled using cuda 11.8.
 
+## Training
+
+After setting up the environment, you can run the different experiments using the examples in the `scripts` folder. You need to specify the appropriate locations, specifically you will need to modify the following:
+
+```
+--input_dir=<input_path>
+--input_file=<input_file>
+--reg_checkpoint=<checkpoint_path>
+```
+
+`input_dir` is the location of the [data](DATA.md).
+`input_file` is the name of the file containing the metadata.
+`reg_checkpoint` is the location of the **checkpoint_file** you obtain after training a post-processing network $\mathrm{D}_{\theta}$.
+
 ## Citation
 
 ```bibtex

@@ -292,8 +292,12 @@ class CorkDataset(data.Dataset):
         self.outputs = outputs
         print(self.df)
         if 'split_set' in self.df:
-            split_set = kwargs.pop('split_set', 'train')
-            self.df = self.df.loc[self.df.split_set == split_set]
+            if self.training:
+                self.df = self.df.loc[self.df.split_set == 'train']
+            elif not self.test:
+                self.df = self.df.loc[self.df.split_set == 'validation']
+            else:
+                self.df = self.df.loc[self.df.split_set == 'test']
 
         print(self.df)
         self.num_voxels = self.df.iloc[0].detector_size
